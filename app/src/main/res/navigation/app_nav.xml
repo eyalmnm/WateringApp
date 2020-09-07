@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/app_nav"
+    app:startDestination="@id/framsListFragment">
+
+    <fragment
+        android:id="@+id/framsListFragment"
+        android:name="com.em_projects.testapp.view.FramsListFragment"
+        android:label="Farms list"
+        tools:layout="@layout/frams_list_fragment" >
+        <action
+            android:id="@+id/action_framsListFragment_to_farmMapFragment"
+            app:destination="@id/farmMapFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right" >
+        </action>
+    </fragment>
+
+    <fragment
+        android:id="@+id/farmMapFragment"
+        android:name="com.em_projects.testapp.view.FarmMapFragment"
+        android:label="Farm map"
+        tools:layout="@layout/fram_map_fragment" >
+
+        <argument
+            android:name="farmId"
+            app:argType="integer"
+            app:nullable="false"
+            android:defaultValue="0" />
+    </fragment>
+</navigation>
