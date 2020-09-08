@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".view.FarmMapFragment">
 
     <com.google.android.gms.maps.MapView
@@ -17,10 +17,10 @@
         android:layout_height="wrap_content"
         android:layout_margin="8dp"
         app:constraint_referenced_ids="loadingProgressBar, loadingTextView"
-        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent" />
+        app:layout_constraintTop_toTopOf="parent" />
 
 
     <ProgressBar
@@ -29,10 +29,10 @@
         android:layout_height="wrap_content"
         android:layout_margin="8dp"
         android:indeterminate="true"
-        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/loadingTextView"
@@ -40,12 +40,12 @@
         android:layout_height="wrap_content"
         android:layout_margin="8dp"
         android:text="Loading"
-        android:textColor="@android:color/black"
         android:textAppearance="@style/TextAppearance.MaterialComponents.Caption"
+        android:textColor="@android:color/black"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/loadingProgressBar"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/loadingProgressBar"
         app:layout_constraintVertical_bias="0.0" />
 
 
@@ -56,14 +56,14 @@
         android:background="@color/semi_transparent"
         android:foreground="?android:attr/selectableItemBackground"
         android:text="Save"
-        android:textColor="@android:color/white"
         android:textAllCaps="true"
-        app:layout_constraintTop_toTopOf="parent"
+        android:textColor="@android:color/white"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintVertical_bias="0.97"
-        app:layout_constraintHorizontal_bias="0.1"/>
+        app:layout_constraintHorizontal_bias="0.1"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.97" />
 
     <Button
         android:id="@+id/clearButton"
@@ -72,12 +72,12 @@
         android:background="@color/semi_transparent"
         android:foreground="?android:attr/selectableItemBackground"
         android:text="Clear"
-        android:textColor="@android:color/white"
         android:textAllCaps="true"
-        app:layout_constraintTop_toTopOf="parent"
+        android:textColor="@android:color/white"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.97" />
 
     <Button
@@ -87,14 +87,14 @@
         android:background="@color/semi_transparent"
         android:foreground="?android:attr/selectableItemBackground"
         android:text="Cancel"
-        android:textColor="@android:color/white"
         android:textAllCaps="true"
-        app:layout_constraintTop_toTopOf="parent"
+        android:textColor="@android:color/white"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintVertical_bias="0.97"
-        app:layout_constraintHorizontal_bias="0.9"/>
+        app:layout_constraintHorizontal_bias="0.9"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.97" />
     />
 
 
