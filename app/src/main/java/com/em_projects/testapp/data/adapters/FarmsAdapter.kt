@@ -14,7 +14,7 @@ interface ItemClickListener {
     fun onItemClick(view: View?, position: Int)
 }
 
-class FarmsAdapter(var farms: List<FarmData>, val listener: ItemClickListener):
+class FarmsAdapter(var farms: List<FarmData>, val listener: ItemClickListener) :
     RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
@@ -23,7 +23,7 @@ class FarmsAdapter(var farms: List<FarmData>, val listener: ItemClickListener):
             parent,
             false
         )
-        return ViewHolder(view).listen{ pos, type ->
+        return ViewHolder(view).listen { pos, type ->
             listener.onItemClick(view, pos)
         }
     }
@@ -41,7 +41,7 @@ class FarmsAdapter(var farms: List<FarmData>, val listener: ItemClickListener):
 
 
     private class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        val name:TextView = itemView.findViewById(R.id.nameTextView)
+        val name: TextView = itemView.findViewById(R.id.nameTextView)
         val lat: TextView = itemView.findViewById(R.id.latTextView)
         val lng: TextView = itemView.findViewById(R.id.lngTextView)
     }

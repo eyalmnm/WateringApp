@@ -3,10 +3,8 @@ package com.em_projects.testapp.viewmodel
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.em_projects.testapp.data.entity.FarmData
-import com.em_projects.testapp.data.entity.GeoPoint
 import com.em_projects.testapp.data.repository.FarmsRepository
 import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.delay
 import kotlinx.coroutines.withContext
 
 class FramMapViewModel(private val farmsRepository: FarmsRepository) : ViewModel() {

@@ -4,7 +4,7 @@ import android.os.Parcelable
 import kotlinx.android.parcel.Parcelize
 
 @Parcelize
-data class GeoPoint(val lat: Double, val lng: Double): Parcelable
+data class GeoPoint(val lat: Double, val lng: Double) : Parcelable
 
 @Parcelize
 data class FarmData(
@@ -13,4 +13,4 @@ data class FarmData(
     val lat: Double,
     val lng: Double,
     var points: List<GeoPoint>? = null
-): Parcelable
+) : Parcelable

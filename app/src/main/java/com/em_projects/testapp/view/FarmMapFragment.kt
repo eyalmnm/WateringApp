@@ -77,7 +77,8 @@ class FarmMapFragment : ScopedFragment(), KodeinAware, OnMapReadyCallback {
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
         (activity as? AppCompatActivity)?.supportActionBar?.title = "Farm: ${farmData?.name}"
-        (activity as? AppCompatActivity)?.supportActionBar?.subtitle = "click on map for create your farm"
+        (activity as? AppCompatActivity)?.supportActionBar?.subtitle =
+            "click on map for create your farm"
         viewModel = ViewModelProviders.of(this, viewModelFactory).get(FramMapViewModel::class.java)
         viewModel.isLoading.observe(viewLifecycleOwner, Observer {
             if (it) {
@@ -92,8 +93,8 @@ class FarmMapFragment : ScopedFragment(), KodeinAware, OnMapReadyCallback {
         super.onViewCreated(view, savedInstanceState)
         loadingGrout.visibility = View.GONE
         cancelButton.setOnClickListener { activity?.onBackPressed() }
-        saveButton.setOnClickListener{ saveData() }
-        clearButton.setOnClickListener{ clearMap() }
+        saveButton.setOnClickListener { saveData() }
+        clearButton.setOnClickListener { clearMap() }
     }
 
     private fun clearMap() {
@@ -213,7 +214,7 @@ class FarmMapFragment : ScopedFragment(), KodeinAware, OnMapReadyCallback {
         val paintText: Paint = textView.paint
         val boundsText = Rect()
         paintText.getTextBounds(text, 0, textView.length(), boundsText)
-        paintText.setTextAlign(Align.CENTER)
+        paintText.textAlign = Align.CENTER
         val conf = Bitmap.Config.ARGB_8888
         val bmpText = Bitmap.createBitmap(
             boundsText.width() + 2

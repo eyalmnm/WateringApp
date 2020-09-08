@@ -3,7 +3,6 @@ package com.em_projects.testapp.data.repository
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import com.em_projects.testapp.data.entity.FarmData
-import com.em_projects.testapp.data.entity.GeoPoint
 import io.paperdb.Paper
 import kotlinx.coroutines.delay
 
