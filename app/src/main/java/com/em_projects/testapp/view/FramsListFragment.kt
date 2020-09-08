@@ -97,7 +97,7 @@ class FramsListFragment : ScopedFragment(), KodeinAware, ItemClickListener {
     }
 
     private fun moveToNextScreen(position: Int) {
-        val bundle = bundleOf("farmId" to position)
+        val bundle = bundleOf("farmId" to position, "farmData" to adapter.farms[position])
         navController.navigate(R.id.action_framsListFragment_to_farmMapFragment, bundle)
     }
 

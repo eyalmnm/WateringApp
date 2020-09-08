@@ -31,5 +31,10 @@
             app:argType="integer"
             app:nullable="false"
             android:defaultValue="0" />
+
+        <argument
+            android:name="farmData"
+            app:argType="com.em_projects.testapp.data.entity.FarmData"
+            app:nullable="false" />
     </fragment>
 </navigation>

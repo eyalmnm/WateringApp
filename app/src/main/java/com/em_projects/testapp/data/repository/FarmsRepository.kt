@@ -31,10 +31,10 @@ class FarmsRepository {
         return mutableLiveData
     }
 
-    suspend fun updateFarmData(index: Int, points: List<GeoPoint>): Boolean {
+    suspend fun updateFarmData(index: Int, farmData: FarmData): Boolean {
         delay(3000) // Fake network Delay
         if (farmsList?.isNotEmpty() == true && farmsList?.size!! > index) {
-            farmsList!![index].points = points
+            farmsList!![index] = farmData
             Paper.book().write(FARM_LIST_KEY, farmsList)
             return true
         }
