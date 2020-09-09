@@ -1,12 +1,16 @@
 package com.em_projects.testapp.view
 
+import android.app.AlertDialog
 import android.content.Context
+import android.content.DialogInterface
 import android.graphics.*
 import android.graphics.Paint.Align
 import android.os.Bundle
+import android.text.InputType
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.EditText
 import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
@@ -52,6 +56,7 @@ class FarmMapFragment : ScopedFragment(), KodeinAware, OnMapReadyCallback {
     private var latLngList: MutableList<LatLng> = mutableListOf()
     private var markerList: MutableList<Marker> = mutableListOf()
     var marker: Marker? = null  // text marker
+    private var waterPercentage: String = ""
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -95,6 +100,7 @@ class FarmMapFragment : ScopedFragment(), KodeinAware, OnMapReadyCallback {
         cancelButton.setOnClickListener { activity?.onBackPressed() }
         saveButton.setOnClickListener { saveData() }
         clearButton.setOnClickListener { clearMap() }
+        waterPercentage = ""
     }
 
     private fun clearMap() {
@@ -104,6 +110,7 @@ class FarmMapFragment : ScopedFragment(), KodeinAware, OnMapReadyCallback {
         markerList.clear()
         latLngList.clear()
         marker?.remove()
+        waterPercentage = ""
     }
 
     private fun saveData() {
@@ -145,7 +152,26 @@ class FarmMapFragment : ScopedFragment(), KodeinAware, OnMapReadyCallback {
             // Create Marker
             drawMarkers(it)
         }
+        googleMap?.setOnPolygonClickListener {
+            openWateringDialog()
+        }
         initFarm()
+    }
+
+    private fun openWateringDialog() {
+        val builder: AlertDialog.Builder = AlertDialog.Builder(activity)
+        builder.setTitle("Watering Percentage")
+        val input = EditText(activity)
+        input.inputType = InputType.TYPE_CLASS_NUMBER
+        builder.setView(input)
+        builder.setPositiveButton("OK",
+            DialogInterface.OnClickListener { dialog, which ->
+                waterPercentage = input.text.toString()
+                drawPolygon()
+            })
+        builder.setNegativeButton("Cancel",
+            DialogInterface.OnClickListener { dialog, which -> dialog.cancel() })
+        builder.show()
     }
 
     private fun initFarm() {
@@ -175,8 +201,11 @@ class FarmMapFragment : ScopedFragment(), KodeinAware, OnMapReadyCallback {
         polygon = googleMap?.addPolygon(polygonOption)
         polygon?.strokeColor = Color.CYAN
         polygon?.fillColor = resources.getColor(R.color.polygon_semi_transparent)
-        val centerPoint = centroid(latLngList)
-        addText(activity, googleMap, centerPoint, "75%", 2, 20)
+        polygon?.isClickable = true
+        if (waterPercentage.isNotEmpty()) {
+            val centerPoint = centroid(latLngList)
+            addText(activity, googleMap, centerPoint, "$waterPercentage%", 2, 20)
+        }
     }
 
     override fun onResume() {
